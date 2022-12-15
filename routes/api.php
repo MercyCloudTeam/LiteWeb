@@ -13,4 +13,9 @@
 |
 */
 
-
+$router->group(['prefix'=>'/api'],function () use ($router) {
+    $router->group(['prefix'=>'/posts'], function () use ($router) {
+        $router->get('/', 'PostsController@list');
+        $router->get('/{slug}', 'PostsController@detail');
+    });
+});

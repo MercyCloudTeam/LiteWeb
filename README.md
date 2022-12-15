@@ -21,8 +21,12 @@ Use Lumen for your official website development, with the comfortable Blade temp
 - Automatic conversion to article functionality via files
 
 
+### 
 
+~~~
+//Copy the template public file to the public folder
 
+~~~
 
 
 ### 简介
