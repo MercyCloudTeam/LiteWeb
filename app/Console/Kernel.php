@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\PublishTemplate;
 use App\Console\Commands\RebuildPublic;
+use App\Console\Commands\SoftLinkAsset;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         PublishTemplate::class,
-        RebuildPublic::class
+        RebuildPublic::class,
+        SoftLinkAsset::class
     ];
 
     /**

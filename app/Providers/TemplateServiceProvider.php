@@ -46,8 +46,11 @@ class TemplateServiceProvider extends ServiceProvider
         $routes = [];
         foreach ($files as $file) {
             if (strpos($file, '.blade.php')) {
-                $name = str_replace('.blade.php', '', $file);
 
+                if ($file == '.' || $file == '..' || $file == '.gitignore') {
+                    continue;
+                }
+                $name = str_replace('.blade.php', '', $file);
                 if (strpos($name, 'common') || strpos($name, 'layouts') || strpos($name, 'errors')) {
                     continue;
                 }
@@ -57,11 +60,12 @@ class TemplateServiceProvider extends ServiceProvider
                         $routes['/'] = "template::$name";
                         break;
                     default:
-                        $name = str_replace($name, '/', '.'); //replace . with /
-                        $name = "template::{$name}"; //add template namespace
-                        $routes['/' . $name] = $name;
+//                        $name = str_replace($name, '/', '.'); //replace . with /
+//                        $name = ""; //add template namespace
+                        $routes['/' . $name] = "template::$name";
                         break;
                 }
+
             }
         }
         return $routes;
